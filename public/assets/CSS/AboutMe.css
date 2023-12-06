@@ -1,0 +1,12 @@
+p, h1, h2 {
+    color: #031a33;
+}
+
+.aboutMe {
+    border: #031a33;
+    border: 0.1vw solid;
+    max-width: 420px;
+    padding: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+}

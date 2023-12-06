@@ -1,0 +1,35 @@
+.buttons
+{
+    max-width: 25vh;
+    margin-top: 5vh;
+    margin-right: 2vh;
+}
+
+.row {
+    --bs-gutter-x: 0rem;
+}
+.button_position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links_positions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+}
+
+.links {
+    max-width: 220px;
+    margin: 2vh;
+    color: #031a33;
+}
+
