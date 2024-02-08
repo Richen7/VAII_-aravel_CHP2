@@ -1,0 +1,75 @@
+.content div {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.content h2 {
+    color: #333;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addBookForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addBookForm input[type="text"],
+#addBookForm textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+#addBookForm input[type="text"]:focus,
+#addBookForm textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#addBookForm button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#addBookForm button:hover {
+    background-color: #0056b3;
+}
+
+#addBookForm input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#addBookForm input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Zvýraznenie, keď súbor nie je vybraný */
+#addBookForm input[type="file"]:not(:valid) {
+    border-color: #ff0000;
+}
+
+#addBookForm label {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 10px 0;
+}

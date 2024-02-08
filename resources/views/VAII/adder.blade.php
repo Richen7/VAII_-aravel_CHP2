@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('assets/CSS/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/CSS/adder.css')}}">
 </head>
 <body>
 <header>
@@ -82,12 +83,13 @@
     @auth
         <div style="border: 3px solid black">
             <h2>Add a new Book</h2>
-            <form id="addBookForm" action="/add-book" method="post">
+            <form id="addBookForm" action="/add-book" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="title" id="title" placeholder="book title"><br>
                 <textarea name="description" id="description" placeholder="description of book"></textarea><br>
                 <input type="text" name="author" id="author" placeholder="author"><br>
                 <input type="text" name="price" id="price" placeholder="price"><br>
+                <input type="file" name="image" id="image"><br>
                 <button onclick="validateAdderForm(event)">Pridaj knihu</button>
             </form>
         </div>

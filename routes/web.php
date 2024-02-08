@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdderController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\SettingController;
 use App\Models\Book;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,11 +37,13 @@ Route::get('/adder', function () {
 
 Route::post('/registration', [UserController::class, 'registration']);
 Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/adder', [AdderController::class, 'showAdder']);
+Route::post('/adder', [BookController::class, 'showAdder']);
 Route::post('/login', [UserController::class, 'login']);
 
 
-Route::post('/add-book', [AdderController::class, 'addBook']);
-Route::get('/edit-book/{book}',[AdderController::class, 'showEditScreen']);
-Route::put('/edit-book/{book}',[AdderController::class, 'updateBook']);
-Route::delete('/delete-book/{book}',[AdderController::class, 'deleteBook']);
+Route::post('/add-book', [BookController::class, 'addBook']);
+Route::get('/edit-book/{book}',[BookController::class, 'showEditScreen']);
+Route::put('/edit-book/{book}',[BookController::class, 'updateBook']);
+Route::delete('/delete-book/{book}',[BookController::class, 'deleteBook']);
+
+//Route::get('/create-settings', [SettingController::class, 'create']);

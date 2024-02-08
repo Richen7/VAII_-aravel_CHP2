@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('assets/CSS/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/CSS/master.css')}}">
 </head>
 <body>
 
@@ -79,35 +80,22 @@
 <script src="{{asset('assets/JS/script.js')}}"></script>
 
 <div class="content">
-    <div class="container" style="border: black">
-        <h2>Knihy</h2>
+    <h2>Kompletná Ponuka</h2>
+    <div class="container">
         @foreach($books as $book)
-            <div style="background-color: white; padding: 3%; margin: 2%">
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="flex: 1;">
-                        <h3>{{$book['title']}}</h3>
-                    </div>
-                    <div style="flex: 1;">
-                        <h2>pridal {{$book->user->name}}</h2>
-                    </div>
-                </div>
-                 {{$book['description']}}
-                <div style="display: flex; justify-content: space-between;">
-                    <div style="flex: 1;">
-                        <h4>Autor : {{$book['author']}}</h4>
-                    </div>
-                    <div style="flex: 1;">
-                        <h4>Cena: {{$book['price']}} €</h4>
-                    </div>
-                </div>
-                @auth
-                    <p><a href="/edit-book/{{$book->id}}">Edit</a></p>
+            <div class="book-item">
+                <img class="book-image" src="{{ asset('storage/images/' . $book['image']) }}" alt="Obrázok knihy">
+                <div class="book-info">
+                    <h3 class="book-title">{{$book['title']}}</h3>
+                    <p class="book-author">Autor: {{$book['author']}}</p>
+                    <p class="book-price">Cena: {{$book['price']}} €</p>
+                    <a href="/edit-book/{{$book->id}}" class="book-edit">Edit</a>
                     <form action="/delete-book/{{$book->id}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button>DELETE</button>
+                        <button class="book-delete">DELETE</button>
                     </form>
-                @endauth
+                </div>
             </div>
         @endforeach
     </div>
