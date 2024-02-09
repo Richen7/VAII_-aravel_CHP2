@@ -14,10 +14,12 @@ class BookController extends Controller
         return redirect('/adder');
     }
 
+    public function showBookInfo(Book $book) {
+        return view('VAII.book-info', ['book' => $book]);
+    }
+
     public function deleteBook (Book $book) {
-        if (auth()->user()->id ===  $book['user_id']){
-            $book->delete();
-        }
+        $book->delete();
         return redirect('/');
     }
 
@@ -31,23 +33,23 @@ class BookController extends Controller
             'description' => 'required',
             'author' => 'required',
             'price' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Voliteľná validácia obrázka
+            'setting_id' => 'required|exists:setting,id',
         ]);
 
-        // Ostatné polia ako predtým
         $incomingFields['title'] = strip_tags($incomingFields['title']);
         $incomingFields['description'] = strip_tags($incomingFields['description']);
         $incomingFields['author'] = strip_tags($incomingFields['author']);
         $incomingFields['price'] = strip_tags($incomingFields['price']);
 
-        // Uloženie obrázka, ak bol odoslaný
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) { // Zmena z 'book_image' na 'image'
             $imagePath = $request->file('image')->store('public/images');
-            $incomingFields['image'] = basename($imagePath); // Aktualizujte cestu k obrázku
+            $incomingFields['image'] = basename($imagePath);
+        } else {
+            unset($incomingFields['image']);
         }
 
         $book->update($incomingFields);
-        return redirect('/');
+        return redirect('/')->with('message', 'Book updated successfully!');
     }
 
     public function showEditScreen(Book $book) {
@@ -63,23 +65,19 @@ class BookController extends Controller
             'description' => 'required',
             'author' => 'required',
             'price' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Pridaná validácia obrázka
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'setting_id' => 'required|exists:setting,id',
         ]);
 
-        $incomingFields['title'] = strip_tags($incomingFields['title']);
-        $incomingFields['description'] = strip_tags($incomingFields['description']);
-        $incomingFields['author'] = strip_tags($incomingFields['author']);
-        $incomingFields['price'] = strip_tags($incomingFields['price']);
+        $incomingFields = array_map('strip_tags', $incomingFields);
         $incomingFields['user_id'] = auth()->id();
 
-        // Uloženie obrázka, ak bol odoslaný
         if($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
             $incomingFields['image'] = basename($imagePath);
         }
 
-
-        Book::query()->create($incomingFields);
+        Book::create($incomingFields);
 
         return redirect('/');
     }

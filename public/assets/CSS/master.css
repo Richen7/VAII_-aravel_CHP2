@@ -13,6 +13,8 @@
 }
 
 .book-item {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -27,18 +29,23 @@
 }
 
 .book-image {
+    height: 450px;
+    object-fit: cover;
     width: 100%;
-    height: auto;
-    display: block;
 }
 
 .book-info {
     padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .book-title {
     font-size: 18px;
-    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-author, .book-price {
@@ -46,18 +53,20 @@
     margin: 5px 0;
 }
 
-.book-edit, .book-delete {
-    text-align: center;
+.book-edit, .book-delete, .book-info-btn {
     padding: 10px;
     display: block;
     color: white;
     text-decoration: none;
+    text-align: center;
     background-color: #007bff;
     border: none;
-    border-radius: 0 0 10px 10px;
+    border-radius: 5px;
+    margin: 4px 2px;
+    transition: background-color 0.3s;
 }
 
-.book-edit:hover, .book-delete:hover {
+.book-edit:hover, .book-delete:hover, .book-info-btn:hover {
     background-color: #0056b3;
 }
 
@@ -67,6 +76,19 @@
 
 .book-delete:hover {
     background-color: #bd2130;
+}
+
+.book-info-btn {
+    background-color: #17a2b8;
+    margin-top: 10px;
+}
+
+.book-info-btn:hover {
+    background-color: #138496;
+}
+
+.book-item-footer {
+    margin-top: auto;
 }
 h2 {
     width: 100%;

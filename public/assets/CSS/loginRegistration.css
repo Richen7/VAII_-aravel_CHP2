@@ -1,35 +1,51 @@
-.buttons
-{
-    max-width: 25vh;
-    margin-top: 5vh;
-    margin-right: 2vh;
-}
-
-.row {
-    --bs-gutter-x: 0rem;
-}
-.button_position {
+.content {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
-.links_positions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.form-container {
+    border: 3px solid black;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20vw;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 .links {
-    max-width: 220px;
-    margin: 2vh;
     color: #031a33;
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
 
+.links:hover {
+    color: #007bff;
+}
