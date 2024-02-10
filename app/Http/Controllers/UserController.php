@@ -50,7 +50,7 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:users,name,' . $user->id,
-            'password' => 'sometimes|nullable|string|min:8|confirmed',
+            'password' => 'sometimes|nullable|string|min:5|confirmed',
         ]);
 
         if ($user->name !== $validatedData['name']) {

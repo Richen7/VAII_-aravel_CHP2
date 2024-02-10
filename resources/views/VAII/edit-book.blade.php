@@ -36,7 +36,7 @@
 
                 <input type="file" name="book_image" id="book_image">
 
-                <button type="submit">Ulož zmeny</button>
+                <button type="submit" onsubmit="validateEditForm(event)">Ulož zmeny</button>
             </form>
         </div>
     @endauth

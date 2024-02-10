@@ -16,24 +16,24 @@
 <div class="content">
     <div class="container2 mt-4">
         <h2>Účet Používateľa</h2>
-            <div class="col-md-6">
-                <form class="form-account" action="{{ route('user.update') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Meno</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Nové heslo</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">Potvrďte heslo</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Uložiť zmeny</button>
-                </form>
-            </div>
+        <div class="col-md-6">
+            <form id="userUpdateForm" class="form-account" action="{{ route('user.update') }}" method="POST" onsubmit="validateUserUpdateForm(event)">
+                @csrf
+                <div class="mb-3">
+                    <label for="name" class="form-label">Meno</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Nové heslo</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="password_confirmation" class="form-label">Potvrďte heslo</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                </div>
+                <button type="submit" class="btn btn-primary">Uložiť zmeny</button>
+            </form>
+        </div>
         @if(auth()->user()->admin == 1)
             <a href="{{ url('/adder') }}" class="btn btn-success mt-3">Pridaj knihu</a>
         @endif

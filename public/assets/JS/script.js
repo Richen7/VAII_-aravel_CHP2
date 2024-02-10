@@ -1,12 +1,14 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu")
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("activate");
-})
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("activate");
+    });
+});
 
-document.querySelectorAll(".nav-link").forEach(n = n.addEventListener(".click", () => {
+document.querySelectorAll(".nav-link").forEach(n = n.addEventListener("click", () => {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }))
@@ -21,7 +23,7 @@ function validateAdderForm(event) {
     var price = document.getElementById('price').value;
 
     if (title === '' || description === '' || author === '' || price === '') {
-        alert('Please fill in all fields');
+        alert('Vyplnťe všetky polia');
         return false;
     }
 
@@ -44,14 +46,14 @@ function validateEditForm(event) {
     var price = document.getElementById('price').value;
 
     if (title === '' || description === '' || author === '' || price === '') {
-        alert('Please fill in all fields');
+        alert('Vyplnťe všetky polias');
         return false;
     }
 
     var isValidPrice = !isNaN(parseFloat(price)) && isFinite(price);
 
     if (!isValidPrice) {
-        alert('Please enter a valid numeric price');
+        alert('Zle zadaná hodnota, zadajte číslo vo formáte 00.00');
         return false;
     }
 
@@ -66,7 +68,7 @@ function validateRegistrationForm(event) {
     var password = document.getElementsByName('password')[0].value;
 
     if (name === '' || email === '' || password === '') {
-        alert('Please fill in all fields');
+        alert('Vyplnťe všetky polia');
         return false;
     }
 
@@ -77,4 +79,31 @@ function validateRegistrationForm(event) {
     }
 
     document.getElementById('registrationForm').submit();
+}
+
+function validateUserUpdateForm(event) {
+    event.preventDefault();
+
+    var name = document.getElementById('name').value;
+    var password = document.getElementById('password').value;
+    var password_confirmation = document.getElementById('password_confirmation').value;
+
+    if (name.trim() === '') {
+        alert('Vlož použivateľské meno!');
+        return false;
+    }
+
+    if (password !== '') {
+        if (password.length < 5) {
+            alert('Heslo musí byť dlhé aspoň 5 znakov.');
+            return false;
+        }
+
+        if (password !== password_confirmation) {
+            alert('Heslá sa nezhodujú!');
+            return false;
+        }
+    }
+
+    document.getElementById('userUpdateForm').submit();
 }
