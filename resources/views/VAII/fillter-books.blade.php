@@ -15,17 +15,17 @@
 <body>
 @include('layouts.header')
 <div class="content">
-    <h2>Kompletná Ponuka</h2>
+    <h2>{{ $setting->name }}</h2>
     <div class="container">
         @foreach($books as $book)
             <div class="book-item">
-                <img class="book-image" src="{{ asset('storage/images/' . $book['image']) }}" alt="Obrázok knihy">
+                <img class="book-image" src="{{ asset('storage/images/' . $book->image) }}" alt="Obrázok knihy">
                 <div class="book-info">
-                    <h3 class="book-title">{{$book['title']}}</h3>
-                    <p class="book-author">Autor: {{$book['author']}}</p>
-                    <p class="book-price">Cena: {{$book['price']}} €</p>
+                    <h3 class="book-title">{{ $book->title }}</h3>
+                    <p class="book-author">Autor: {{ $book->author }}</p>
+                    <p class="book-price">Cena: {{ $book->price }} €</p>
                     <a href="{{ url('/books/info', $book->id) }}" class="book-info-btn">Info</a>
-                    @if(auth()->user() && auth()->user()->admin == 1)
+                    @if(auth()->check() && auth()->user()->admin == 1)
                         <a href="/edit-book/{{$book->id}}" class="book-edit">Edit</a>
                         <form action="/delete-book/{{$book->id}}" method="POST" onsubmit="return confirm('Vážne chcete zmazať tento produkt?');">
                             @csrf
@@ -41,6 +41,4 @@
 @include('layouts.footer')
 <script src="{{asset('assets/JS/script.js')}}"></script>
 </body>
-
-
 </html>

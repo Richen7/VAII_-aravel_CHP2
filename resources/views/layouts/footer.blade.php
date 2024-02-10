@@ -1,4 +1,3 @@
-{{-- resources/views/layouts/footer.blade.php --}}
 <footer>
     <div class="container">
         <div class="row">

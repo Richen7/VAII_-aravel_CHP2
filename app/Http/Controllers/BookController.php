@@ -7,9 +7,23 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use PHPUnit\Metadata\PostCondition;
 use App\Models\Book;
+use App\Models\Setting;
 
 class BookController extends Controller
 {
+    public function filterBooks($settingId)
+    {
+        $setting = Setting::find($settingId);
+
+        if (!$setting) {
+            abort(404);
+        }
+
+        $books = Book::where('setting_id', $settingId)->get();
+
+        return view('VAII.fillter-books', compact('books', 'setting'));
+    }
+
     public function showAdder() {
         return redirect('/adder');
     }
@@ -41,7 +55,7 @@ class BookController extends Controller
         $incomingFields['author'] = strip_tags($incomingFields['author']);
         $incomingFields['price'] = strip_tags($incomingFields['price']);
 
-        if ($request->hasFile('image')) { // Zmena z 'book_image' na 'image'
+        if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
             $incomingFields['image'] = basename($imagePath);
         } else {
