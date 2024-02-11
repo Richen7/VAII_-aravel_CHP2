@@ -111,6 +111,10 @@ function validateUserUpdateForm(event) {
     document.getElementById('userUpdateForm').submit();
 }
 
+function confirmDeletion() {
+    return confirm('Ste si istý že chcete zmazať účet ?');
+}
+
 function validateCheckoutForm(event) {
     event.preventDefault();
 
@@ -209,7 +213,6 @@ $(document).ready(function() {
             url: `/cart/add/${bookId}`,
             data: { bookId: bookId },
             success: function(data) {
-                alert('Item added to cart');
                 updateCartInfo();
             },
             error: function(response) {

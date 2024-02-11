@@ -24,8 +24,6 @@ class UserController extends Controller
         return redirect('/');
     }
 
-
-
     public function login(Request $request) {
         $incominFields = $request->validate([
             'loginname' => 'required',
@@ -64,6 +62,22 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->back()->with('status', 'User updated successfully!');
+    }
+
+    public function destroy($userId)
+    {
+        if (Auth::id() == $userId) {
+            $user = Auth::user();
+            Auth::logout();
+
+            if ($user->delete()) {
+                return redirect('/login')->with('status', 'Account successfully deleted.');
+            } else {
+                return back()->with('error', 'There was a problem deleting your account.');
+            }
+        } else {
+            return back()->with('error', 'Unauthorized action.');
+        }
     }
 }
 

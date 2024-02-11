@@ -38,6 +38,13 @@
         @if(auth()->user()->admin == 1)
             <a href="{{ url('/adder') }}" class="btn btn-success mt-3">Pridaj knihu</a>
         @endif
+
+        <form action="{{ route('user.destroy', auth()->user()) }}" method="POST" onsubmit="return confirmDeletion()">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger mt-3">Zrušiť účet</button>
+        </form>
+
     </div>
 </div>
 

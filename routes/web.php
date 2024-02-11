@@ -71,3 +71,4 @@ Route::post('/checkout', [OrderController::class, 'placeOrder'])->name('checkout
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
 
+Route::delete('/account/{user}', [UserController::class, 'destroy'])->name('user.destroy');
