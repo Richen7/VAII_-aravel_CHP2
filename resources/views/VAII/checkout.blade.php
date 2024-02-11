@@ -18,7 +18,7 @@
 <div class="content">
     <div class="container">
         <h2>Doručovací údaje</h2>
-        <form action="{{ route('checkout') }}" method="POST" class="checkout-form">
+        <form action="{{ route('checkout') }}" method="POST" class="checkout-form" onsubmit="validateCheckoutForm(event)">
             @csrf
             <div class="form-group">
                 <label for="firstname">Meno *</label>
@@ -33,7 +33,7 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="phone">Telefón *</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" pattern="\d*" required>
             </div>
 
             <div class="form-group">
@@ -49,7 +49,7 @@
                 <textarea id="note" name="note"></textarea>
             </div>
 
-            <button type="submit" class="btn" onclick="validateCheckoutForm()">Odoslať objednávku</button>
+            <button type="submit" class="btn">Odoslať objednávku</button>
         </form>
     </div>
 </div>

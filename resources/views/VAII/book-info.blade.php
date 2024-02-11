@@ -30,7 +30,7 @@
             <div class="book-purchase-info">
                 <form action="{{ route('cart.add', $book->id) }}" method="POST">
                     @csrf
-                    <button type="button" class="btn btn-primary add-to-cart-btn" data-book-id="{{ $book->id }}">Add to Cart</button>
+                    <button type="button" class="btn btn-primary add-to-cart-btn" data-book-id="{{ $book->id }}">Pridať do košíka</button>
                 </form>
                 <span class="book-price">Cena: {{ $book->price }} €</span>
             </div>
